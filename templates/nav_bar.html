@@ -1,0 +1,40 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/home"><span class="glyphicon glyphicon-home"</span></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+      <form class="navbar-form navbar-right" ng-show="!loggedin">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+          <input type="text" placeholder="Username" class="form-control" ng-model="user.username" required>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+          <input type="password" placeholder="Password" class="form-control" ng-model="user.password" required>
+        </div>
+        <button class="btn btn-success" ng-click="login(user)">Sign in</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right" ng-show="loggedin">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currentUser.fullname}}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/profile/{{currentUser.username}}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Sign Out</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" ng-show="loggedin">
+        <li><a ng-href="#/category/list" class="navbar-link">Category</a></li>
+        <li><a ng-href="#/topic/list" class="navbar-link">Topic</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

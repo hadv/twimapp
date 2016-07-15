@@ -1,0 +1,65 @@
+<div class="page-header">
+  <h2>Category Create Form</h2>
+</div>
+<p class="text-danger" ng-show="haserror">
+  <strong>Error!</strong> {{errormessage}}
+</p>
+<form class="form-horizontal" name="categoryFrom" novalidate>
+  <div class="form-group" ng-class="{ 'has-error has-feedback' : categoryFrom.id.$invalid && !categoryFrom.id.$pristine }">
+    <label for="id" class="control-label col-xs-2">Id</label>
+    <div class="col-xs-3">
+      <input type="text" name="id" id="id" ng-model="category._id" class="form-control" ng-required="true" tabindex="1" autofocus>
+      <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="categoryFrom.id.$invalid && !categoryFrom.id.$pristine"></span>
+      <span ng-show="categoryFrom.id.$error.required" class="help-block">Please enter value for category id</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="file" class="control-label col-xs-2">Icon</label>
+    <div class="col-xs-5" ng-class="{ 'has-error has-feedback' : categoryFrom.file.$invalid && !categoryFrom.file.$pristine }">
+      <input class="form-control" type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="250KB" ngf-model-invalid="errorFiles" onchange="angular.element(this).scope().upload(this)">
+      <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="categoryFrom.file.$invalid && !categoryFrom.file.$pristine"></span>
+      <span ng-show="categoryFrom.file.$error.maxSize" class="help-block">File is too large. Please upload file with maximum size of 250KB</span>
+    </div>
+    <div class="col-xs-1">
+      <img ng-show="categoryFrom.file.$valid" ngf-thumbnail="picFile" class="thumb">
+    </div>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error has-feedback' : categoryFrom.name.$invalid && !categoryFrom.name.$pristine }">
+    <label for="name" class="control-label col-xs-2">Name</label>
+    <div class="col-xs-5">
+      <input class="form-control" type="text" name="name" id="name" ng-model="category.name" ng-required="true" ng-maxlength="200">
+      <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="categoryFrom.name.$invalid && !categoryFrom.name.$pristine" tabindex="2"></span>
+      <span ng-show="categoryFrom.name.$error.required" class="help-block">Please enter value for category name</span>
+      <span ng-show="categoryFrom.name.$error.maxlength" class="help-block">Category name is too long (maxlength=200)</span>
+    </div>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error has-feedback' : categoryFrom.level.$invalid && !categoryFrom.level.$pristine }">
+    <label for="level" class="control-label col-xs-2">Level</label>
+    <div class="col-xs-3">
+      <input class="form-control" type="text" name="level" id="level" ng-model="category.level" ng-required="true" ng-maxlength="100">
+      <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="categoryFrom.level.$invalid && !categoryFrom.level.$pristine"></span>
+      <span ng-show="categoryFrom.level.$error.required" class="help-block">Please enter value for category level</span>
+      <span ng-show="categoryFrom.level.$error.maxlength" class="help-block">Category level is too long (maxlength=100)</span>
+    </div>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error' : categoryFrom.order.$invalid && !categoryFrom.order.$pristine }">
+    <label for="order" class="control-label col-xs-2">Display Order</label>
+    <div class="col-xs-2">
+      <input class="form-control" type="number" name="order" id="order" ng-model="category.disp_order" ng-pattern="/\d+/" min="0">
+      <span ng-show="categoryFrom.order.$invalid && !categoryFrom.order.$pristine" class="help-block">Please enter number only</span>
+    </div>
+  </div>
+  <div class="form-group" ng-class="{ 'has-error has-feedback' : categoryFrom.description.$invalid && !categoryFrom.description.$pristine }">
+    <label for="description" class="control-label col-xs-2">Description</label>
+    <div class="col-xs-8">
+      <textarea class="form-control" id="description" name="description" ng-model="category.description" rows="10" ng-maxlength="2000"></textarea>
+      <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="categoryFrom.description.$invalid && !categoryFrom.description.$pristine"></span>
+      <span ng-show="categoryFrom.description.$error.maxlength" class="help-block">Category description is too long (maxlength=2000)</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-offset-2 col-xs-10">
+      <button class="btn btn-primary" ng-click="createCategory(category);" ng-disabled="categoryFrom.$invalid">Save</button>
+    </div>
+  </div>
+</form>

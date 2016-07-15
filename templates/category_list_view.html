@@ -1,0 +1,62 @@
+<div class="page-header">
+  <h2>Category List</h2>
+</div>
+<p class="text-danger" ng-show="haserror">
+  <strong>Error!</strong> {{errormessage}}
+</p>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#/category/create">New</a></li>
+  </ul>
+</div>
+<div class="panel panel-default">
+  <table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Icon</th>
+        <th>Name</th>
+        <th>Level</th>
+        <th>Description</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="category in categories">
+        <td>{{$index + 1}}</td>
+        <td><a ng-href="#/category/id/{{category._id}}">
+          <img data-ng-src="{{category.icon}}" width="24px" height="24px"/>
+        </a></td>
+        <td style="min-width: 200px;"><a ng-href="#/category/id/{{category._id}}">{{category.name}}</a></td>
+        <td>{{category.level}}</td>
+        <td>{{category.description}}</td>
+        <td>
+          <button class="btn btn-default" onclick="deleteCategoryConfirm(this);" data-id="{{$index}}">
+            <span class="glyphicon glyphicon-remove">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="deleteCategoryConfirm" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Category Delete Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete the category?</p>
+                <p class="text-warning"><small>If you don't want, click [Cancel] button.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button id="deleteCategoryButton" type="button" class="btn btn-primary" onclick="deleteCategory(this);">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

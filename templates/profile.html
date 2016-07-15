@@ -1,0 +1,73 @@
+<div class="page-header">
+  <h2>Profile</h2>
+</div>
+<p class="text-danger" ng-show="haserror">
+  <strong>Error!</strong> {{errormessage}}
+</p>
+<div class="container">
+  <form class="form-horizontal">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="username" class="control-label col-xs-4">Username</label>
+          <div class="col-xs-8">
+            <input type="text" name="username" id="username" ng-model="user.username" class="form-control" readonly="readonly">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="username" class="control-label col-xs-4">Password</label>
+          <div class="col-xs-8">
+            <input type="password" name="username" id="username" ng-model="user.username" class="form-control" readonly="readonly">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firstname" class="control-label col-xs-4">First Name</label>
+          <div class="col-xs-8">
+            <input class="form-control" type="text" name="firstname" id="firstname" ng-model="user.firstname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastname" class="control-label col-xs-4">Last Name</label>
+          <div class="col-xs-8">
+            <input class="form-control" type="text" name="lastname" id="lastname" ng-model="user.lastname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="control-label col-xs-4">Email</label>
+          <div class="col-xs-8">
+            <input class="form-control" type="text" name="email" id="email" ng-model="user.email" min="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="token" class="control-label col-xs-4">API Token Key</label>
+          <div class="col-xs-8">
+            <input class="form-control" id="token" name="token" ng-model="user.token" type="password" readonly="readonly"></input>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="avatar" class="control-label col-xs-4">Avatar</label>
+          <div class="col-xs-8">
+            <img alt="{{user.fullname}}" src="" width="120px" height="150px" id="avatar">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="file" class="control-label col-xs-4"></label>
+          <div class="col-xs-8">
+            <input type="file" id="file" name="file"></input>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="col-xs-offset-4 col-xs-12">
+            <button class="btn btn-primary" ng-click="updateProfile(user);" ng-disabled="true">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

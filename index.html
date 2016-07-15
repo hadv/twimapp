@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="twimapp">
+  <head>
+    <title>Twim Backoffice</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript"
+      src="/bower_components/angular/angular.min.js">
+    </script>
+    <script type="text/javascript"
+      src="/bower_components/angular-route/angular-route.min.js">
+    </script>
+    <script type="text/javascript"
+      src="/bower_components/angular-local-storage/dist/angular-local-storage.min.js">
+    </script>
+    <script type="text/javascript"
+      src="/bower_components/ng-file-upload/ng-file-upload.min.js">
+    </script>
+    <script type="text/javascript"
+      src="/bower_components/tinymce-dist/tinymce.min.js"></script>
+    <script type="text/javascript"
+      src="/bower_components/angular-ui-tinymce/src/tinymce.js"></script>
+    <script type="text/javascript" src="/bin/index.js"></script>
+    <script type="text/javascript" src="/public/js/twim.js"></script>
+    <script src="/bower_components/jquery/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <script type="text/javascript" src="/public/js/twim.js"></script>
+  </head>
+  <body>
+  <div class="container">
+    <div class="row">
+      <nav-bar></nav-bar>
+      <section>
+        <div ng-view>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class="twim-footer">
+    <div class="container">
+      <hr>
+      <p>Copyright © 2016 by eAgri Co., Ltd Alright Reserved</p>
+    </div>
+  </footer>
+  </body>
+</html>
